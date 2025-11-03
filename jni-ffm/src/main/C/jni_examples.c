@@ -8,14 +8,16 @@
 #define ERR_GET_STATIC_METHOD_FAILED -2
 #define ERR_CALL_STATIC_METHOD_FAILED -3
 
+extern unsigned int hash_base = 5381;
+
 /*
  * Simple hash function to convert a string into a better RNG seed
  * Uses a variant of the djb2 hash algorithm
  */
-unsigned int hash_string(const char* str) {
-    unsigned int hash = 5381;
+ unsigned int hash_string(const char* str) {
     int c;
-    
+    unsigned int hash = hash_base;
+
     while ((c = *str++)) {
         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
     }
@@ -56,6 +58,11 @@ JNIEXPORT jint JNICALL Java_com_ibm_examples_jni_JNIExamples_improveRNGSeed0
 
     // Return the improved seed (ensure it's positive)
     return ret;
+}
+
+
+int callback_ffm(const char * str, int (*printObj)(const void *)) {
+    return printObj(str);
 }
 
 int callback(JNIEnv* env, jobject obj, jint val) {
