@@ -1,6 +1,6 @@
 package com.ibm.api;
 
-import com.ibm.ai.RegulatoryChangeImpactCopilot;
+import com.ibm.ai.RegulatoryChangeImpactAssistant;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
@@ -13,7 +13,7 @@ import jakarta.ws.rs.core.MediaType;
 public class RegulatoryChangeResource {
 
     @Inject
-    RegulatoryChangeImpactCopilot copilot;
+    RegulatoryChangeImpactAssistant copilot;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

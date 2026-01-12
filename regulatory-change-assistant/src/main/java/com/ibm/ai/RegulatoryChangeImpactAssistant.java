@@ -5,10 +5,10 @@ import dev.langchain4j.service.UserMessage;
 import io.quarkiverse.langchain4j.RegisterAiService;
 
 @RegisterAiService(retrievalAugmentor = RetrievalAugmentorSupplier.class)
-public interface RegulatoryChangeImpactCopilot {
+public interface RegulatoryChangeImpactAssistant {
 
     @SystemMessage("""
-            You are a specialized Regulatory Change Impact Copilot for financial institutions.
+            You are a specialized Regulatory Change Impact Assistant for financial institutions.
 
             Your responsibilities:
             - Answer questions about regulatory changes and compliance requirements from Regulatory Change Bulletins
