@@ -13,9 +13,9 @@
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.22.3</quarkus.platform.version>
+        <quarkus-langchain4j.version>1.13.1</quarkus-langchain4j.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.2</surefire-plugin.version>
-        <quarkus-langchain4j.version>0.26.1</quarkus-langchain4j.version>
     </properties>
 
     <dependencyManagement>
@@ -27,6 +27,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.quarkiverse.langchain4j</groupId>
+                <artifactId>quarkus-langchain4j-bom</artifactId>
+                <version>${quarkus-langchain4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -34,7 +41,6 @@
         <dependency>
             <groupId>io.quarkiverse.langchain4j</groupId>
             <artifactId>quarkus-langchain4j-ollama</artifactId>
-            <version>${quarkus-langchain4j.version}</version>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
