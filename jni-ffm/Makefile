@@ -32,13 +32,13 @@ endif
 # Directories
 SRC_DIR = src/main
 JAVA_SRC_DIR = $(SRC_DIR)/java
+JNI_SRC_DIR = $(JAVA_SRC_DIR)/com/ibm/examples/jni
 C_SRC_DIR = $(SRC_DIR)/c
 BUILD_DIR = build
 CLASSES_DIR = $(BUILD_DIR)/classes
 LIB_DIR = $(BUILD_DIR)/lib
 
 # Source files
-JAVA_SOURCES = $(shell find $(JAVA_SRC_DIR) -name "*.java")
 C_SOURCES = $(C_SRC_DIR)/jni_examples.c
 
 # Output files
@@ -65,7 +65,11 @@ $(LIB_DIR): $(BUILD_DIR)
 
 # Compile Java classes
 classes: $(CLASSES_DIR)
-	javac -d $(CLASSES_DIR) $(JAVA_SOURCES)
+	find $(JAVA_SRC_DIR) -name "*.java" -exec javac -d $(CLASSES_DIR) {} +
+
+# Only compile JNI classes
+jni-classes: $(CLASSES_DIR)
+	find $(JNI_SRC_DIR) -name "*.java" -exec javac -d $(CLASSES_DIR) {} +
 
 # Compile native library
 $(LIBRARY_PATH): $(LIB_DIR) $(C_SOURCES)
