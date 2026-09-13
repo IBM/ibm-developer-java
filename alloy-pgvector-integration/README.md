@@ -1,5 +1,11 @@
 # alloy-pgvector-integration
 
+## Dependency licensing
+
+This repository contains Apache-2.0-licensed example source code. This example depends on IronCore Alloy (`ironcore-alloy-java` version `0.13.0`), which is separately licensed under **AGPL-3.0-or-later**. The repository's Apache license does not apply to Alloy.
+
+Distributing or hosting an application incorporating Alloy may require compliance with AGPL obligations for the combined application. IronCore also offers commercial licensing. See [IronCore's licensing options](https://github.com/IronCoreLabs/ironcore-alloy#license) before reusing this integration in another application.
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
