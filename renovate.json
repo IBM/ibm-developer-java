@@ -1,6 +1,65 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommits"
+  ],
+  "labels": ["dependencies"],
+  "schedule": ["before 6am on monday"],
+  "timezone": "Europe/Berlin",
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "hostRules": [
+    {
+      "matchHost": "repo.maven.apache.org",
+      "concurrentRequestLimit": 2
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Group Quarkus platform and extension updates per sample project",
+      "matchManagers": ["maven"],
+      "matchFileNames": ["**/pom.xml"],
+      "matchPackageNames": [
+        "io.quarkus.platform:**",
+        "io.quarkus:**",
+        "io.quarkiverse.**",
+        "io.quarkiverse.langchain4j:**"
+      ],
+      "groupName": "quarkus-{{packageFileDir}}"
+    },
+    {
+      "description": "Group Red Hat UBI base images per sample project",
+      "matchManagers": ["dockerfile"],
+      "matchFileNames": ["**/src/main/docker/**"],
+      "groupName": "docker-{{packageFileDir}}"
+    },
+    {
+      "description": "Group Maven wrapper updates across all samples",
+      "matchManagers": ["maven-wrapper"],
+      "groupName": "maven-wrapper"
+    },
+    {
+      "description": "Group shared Maven build plugin bumps across samples",
+      "matchManagers": ["maven"],
+      "matchPackageNames": [
+        "org.apache.maven.plugins:maven-compiler-plugin",
+        "org.apache.maven.plugins:maven-surefire-plugin",
+        "org.apache.maven.plugins:maven-failsafe-plugin"
+      ],
+      "groupName": "maven-build-plugins"
+    },
+    {
+      "description": "Ship security fixes without waiting for the weekly schedule",
+      "matchCategories": ["security"],
+      "schedule": ["at any time"]
+    },
+    {
+      "description": "Keep major Quarkus upgrades separate from minor/patch bumps",
+      "matchManagers": ["maven"],
+      "matchPackageNames": ["io.quarkus.platform:**"],
+      "separateMajorMinor": true
+    }
   ]
 }
