@@ -18,6 +18,7 @@ a.out
 *~
 build/
 target/
+auto/
 nbproject/
 */nbproject/
 manifest.mf
