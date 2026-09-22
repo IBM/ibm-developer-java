@@ -287,4 +287,5 @@ jmethodID mid = (*env)->GetStaticMethodID(env, cls, "setInfo", "(I)V");
 
 ## License
 
-This example project is provided for educational purposes. Feel free to use and modify as needed. 
+This example project is provided for educational purposes (only).
+Feel free to use and modify as needed - but this is not production code and is purely provided for demonstration purposes.
