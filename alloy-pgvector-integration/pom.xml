@@ -70,7 +70,7 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-vector</artifactId>
-            <version>7.1.2.Final</version> <!-- Sets to Hibernate version used by Quarkus -->
+            <version>7.4.13.Final</version> <!-- Sets to Hibernate version used by Quarkus -->
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
